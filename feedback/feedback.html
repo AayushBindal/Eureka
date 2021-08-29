@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <link rel = "icon" href="Eureka.png" type = "image/x-icon">
+
+    <title> we require your feedback
+    </title>
+    <script src="feedback.js"> </script>
+    <script src="jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="p5.easycam.js"> </script>
+    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.min.js"> </script>
+    <script src="soundmanager2.js"> </script>
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyD6024u-oSed3tESFTwRrmDUpEZ8arbd4Q",
+    authDomain: "feedback-a78b7.firebaseapp.com",
+    databaseURL: "https://feedback-a78b7-default-rtdb.firebaseio.com",
+    projectId: "feedback-a78b7",
+    storageBucket: "feedback-a78b7.appspot.com",
+    messagingSenderId: "803171811717",
+    appId: "1:803171811717:web:f1b69ae8913607287b04ec",
+    measurementId: "G-7787H3JFCB"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+      
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="p5.speech.js"> </script>
+  <link rel="stylesheet" type="text/css" href="feed.css">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+$(document).ready(function(){
+  $("button").click(function(){
+    soundClick();
+  });
+  $("input").click(function(){
+    soundClick();
+  });
+  $("textarea").click(function(){
+    soundClick();
+  });
+});
+
+function soundClick(){
+  soundManager.url = '/path/to/swf-files/';
+
+soundManager.onready(function() {
+  soundManager.createSound({
+    id: 'click',
+    url: '../click.wav'
+  });
+
+  // ...and play it
+  soundManager.stop('click');
+  soundManager.play('click');
+});
+}
+    </script>
+</head>
+<body>
+  <h1 id="heading"> Your feedback matters for us </h1>
+  <input placeholder="Name" id="name" required> </input><br/>
+  <input placeholder="email address" id="email" type="email" autocomplete="false" required></input><br/>
+  <input placeholder="Country" id="Country" autocomplete="false"  required> </input> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input placeholder="Did we did good? yes/no" id="bool" minlength="2" maxlength="3" autocomplete="false"  required ></input><br/>
+  <textarea placeholder="feedback" id="feedback" autocomplete="false" ></textarea><br/> &nbsp;
+  <button id="submit1" onclick="newWindow();"> Submit </button></br></br>
+</body>
+</html>

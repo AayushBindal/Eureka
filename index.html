@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  <link rel = "icon" href="images/Eureka.png" type = "image/x-icon">
+	  <!-- Warning to give in console by chance if conssole opens ======================================================================-->
+	<script>console.log("%c warning ⚠ Using console may be destructive Do not copy/paste the code you don't know ", "color:yellow; background:black; font-size: 30px;");
+	</script>
+	  <!-- Warning to give in console by chance if conssole opens ended ================================================================-->
+			<!-- Give all the links to add here ////////////////////////////////////////////-->
+  <script type="text/javascript" src="rivescript.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <!-- <script type="text/javascript" src="p5.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="p5.speech.js"> </script>
+  <script src="faction.js"> </script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	 		 <!-- Give all the links to add here ////////////////////////////////////////////-->
+  <title> advanced rivescript chatbox </title>
+  
+  <style type="text/css">
+		.context-menu {
+			position: absolute;
+			text-align: center;
+			background: rgb(255, 255, 255);
+			border: black;
+		}
+
+		.context-menu ul {
+			padding: 0px;
+			margin: 0px;
+			min-width: 150px;
+			list-style: none;
+		}
+
+		.context-menu ul li {
+			padding-bottom: 7px;
+			padding-top: 7px;
+			border: 1px solid black;
+		}
+
+		.context-menu ul li a {
+			text-decoration: none;
+			color: black;
+		}
+
+		.context-menu ul li:hover {
+			background: white;
+		}
+	</style>
+	<script src="../sound libraries/soundmanager2.js"></script>
+</head>
+
+<body>
+	
+  <p class = "stick">
+	<fom>
+    <input maxlength="120" minlength="2" id="user_input" autofocus placeholder="send message to bot" class = "searchbox" data-id="turns your theme to radial mode"> </input>
+	<button id="submit"><i class="fa fa-paper-plane fa-1x" aria-hidden="true"></i></button>
+</fom>
+  </p>
+<div class="container">
+	<!-- Trigger the modal with a button -->
+	<div class="themeButton">
+		<div  class="stickyTheme">
+	<button type="button" data-toggle="modal" data-target="#myModal" id="bottomBtn"><i class="fa fa-pencil-square-o fa-1x" aria-hidden="true"></i>
+	</button>
+	</div>
+  	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+	  <div class="modal-dialog">
+	  
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Select your theme</h4>
+		  </div>
+		  <div class="modal-body">
+			<!-- main body material -->
+				<div data-dismiss="modal">
+					<button class="bg1" onclick="bg1Act();"> night </button>
+					<button class="bg2" onclick="bg2Act();"> sleepy </button>
+					<button class="bg3" onclick="bg3Act();"> flavoured </button>
+					<button class="bg4" onclick="bg4Act();"> flakes </button>
+					<button class="bg5" onclick="bg5Act();"> flakes </button>
+				<br/> <hr/>
+				<button class="themeSelect" onclick="changeColorBlue();"> blue </button>
+				<button class="themeSelectRed" onclick="changeColorRed();"> red </button>
+				<button class="themeSelectGreen" onclick="changeColorGreen();"> green </button>
+				<button class="themeSelectYellow" onclick="changeColorYellow();"> Yellow </button>
+				<button class="themeSelectPea" onclick="changeColorPea();"> peacock </button>
+			</div>
+
+		</div>
+		  <!-- <div class="modal-footer">
+		  </div> -->
+		</div>
+		
+	  </div>
+	</div>
+  
+  <a href="../feedback/feedback.html" target="_blank" class="noA"><button id="feedbackButton" ><i class="fa fa-comments-o fa-1x" aria-hidden="true"> </i></button></a>
+  <script>
+
+	//  making background-color algorithm =================================================
+
+	  function bg5Act(){
+		  document.body.style.backgroundImage = "url('../images/bg5.png')";
+	  }
+
+	  function bg4Act(){
+		  document.body.style.backgroundImage = "url('../images/bg4.png')";
+	  }
+  function bg1Act(){
+	document.body.style.backgroundImage = "url('../images/bg1.png')";
+  }
+  function bg2Act(){
+	document.body.style.backgroundImage = "url('../images/bg2.png')";
+  }
+
+  function bg3Act(){
+	document.body.style.backgroundImage = "url('../images/bg3.png')";
+  }
+
+	function changeColorPea() {
+		document.body.style.backgroundImage = "url('../images/peacock.png')";
+	}
+
+	function changeColorYellow() {
+		document.body.style.backgroundImage = "url('../images/yellow.png')";
+	}
+
+	function changeColorRed() {
+		document.body.style.backgroundImage = "url('../images/red.png')";
+	}
+
+	function changeColorBlue() {
+		document.body.style.backgroundImage = "url('../images/blue.png')";
+	}
+
+	function changeColorGreen() {
+		document.body.style.backgroundImage = "url('../images/green.png')";
+	}
+	//  making background-color algorithm ended =================================================
+  $('#submit').click(function () {
+    $('#user_input').val('');
+  });
+  $(document).on("keypress", function(e){
+    if(e.which == 13){
+      // used to reset the value of the input search box
+    //  $('#user_input').val('');
+    }
+    });
+
+    // disable right click
+    $(document).on({
+    "contextmenu": function(e) {
+       // Stop the context menu
+        e.preventDefault();
+        // createP("Hi");
+    }
+
+});
+$(document).ready(function(){
+  $("button").click(function(){
+    soundClick();
+  });
+  $("#Eureka").click(function(){
+    soundClick();
+  });
+  $("input").click(function(){
+    soundClick();
+  });
+});
+
+  </script>
+  <img id = "Eureka" draggable="false" src = "../images/Eureka.png" width="10%" draggable="false"></img>
+  <!-- <section class="wrapper">
+	<div class="spinner">
+	  <i></i>
+	  <i></i>
+	  <i></i>
+	  <i></i>
+	  <i></i>
+	  <i></i>
+	  <i></i>
+	  <i></i>
+	</div>
+  </section> -->
+  <script src="sketch.js"></script>
+  <!-- making own right click elements -->
+  <!-- foo is here a replacement of a  -->
+  <div id="contextMenu" class="context-menu" style="display: none"> 
+	<ul class="menu">
+		<li class="paste" data-id="Move to terms"><foo><i class="fa fa-paste" aria-hidden="true"><a href="licence.html" target="_blank"> Move to</a></i></foo></li> 
+		<li class="download" data-id="refresh" onclick="reload();"><foo href="#"><i class="fa fa-refresh" aria-hidden="true"></i> refresh</foo></li>
+		<li class="" onclick="fancyMode();" data-id="turns your theme to radial mode"><foo><i class = "fa fa-themeisle" aria-hidden="true"></i> fancy radial</foo></li> 
+		<li class="" onclick="singMode();" data-id="rocks with you"><foo><i class = "fa fa-american-sign-language-interpreting" aria-hidden="true"></i> rock mode</foo></li> 
+		<!-- <li class="trash"><foo href="#"><i class="fa fa-trash" aria-hidden="true"></i> Delete</foo></li>  -->
+	</ul> 
+</div>
+	<script>
+		document.onclick = hideMenu; 
+		document.oncontextmenu = rightClick;
+		function hideMenu() {
+			 document.getElementById("contextMenu").style.display = "none" 
+		 } 
+		 function fancyMode(){
+			 document.body.classList.toggle("fancy-mode");
+		 }	   
+		 function rightClick(e) { 
+			 e.preventDefault(); 
+	   
+			 if (document.getElementById("contextMenu") .style.display == "block"){ 
+				 hideMenu(); 
+			 }else{ 
+				 var menu = document.getElementById("contextMenu")
+				 menu.style.display = 'block'; 
+				 menu.style.left = e.pageX + "px"; 
+				 menu.style.top = e.pageY + "px"; 
+			 } 
+		 } 
+	 </script>
+	 
+	</div>
+</body>
+</html>
